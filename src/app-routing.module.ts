@@ -14,7 +14,7 @@ import { StatusCommand } from './status';
             before: () => {
                 console.clear();
                 console.log('           //---------====###====---------\\\\');
-                console.log('      -=<<{{ TypeORM unnoficial cli v0.0.1 }}>>=-');
+                console.log('      -=<<{{ TypeORM unnoficial cli v0.0.3 }}>>=-');
                 console.log('           \\\\---------====###====---------//\n');
                 console.log(
                         '-------------------------------------------------------\n'
