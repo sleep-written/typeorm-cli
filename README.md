@@ -16,11 +16,11 @@ npm i --save ts-path-mapping
 ```
 finally, install this package locally...
 ```npm
-npm i --save-dev @faaip-de-oiad/typeorm-cli
+npm i --save-dev @corrasion/typeorm-cli
 ```
 ...or global if you want:
 ```npm
-npm i --g @faaip-de-oiad/typeorm-cli
+npm i --g @corrasion/typeorm-cli
 ```
 
 ## Usage
