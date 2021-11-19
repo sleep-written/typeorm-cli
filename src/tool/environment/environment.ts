@@ -1,7 +1,9 @@
 import { PackageJson } from '../package-json';
 import { ORMConfig } from '../orm-config/orm-config';
 import { TSConfig } from '../ts-config/ts-config';
+
 import { resolve } from 'path';
+import { rm } from 'fs/promises';
 
 export class Environment {
     private _packageJson: PackageJson;
@@ -75,5 +77,15 @@ export class Environment {
         }
 
         return found;
+    }
+
+    async clearDist(): Promise<void> {
+        const tsConfig = await this._tsConfig.load();
+        const folder = tsConfig.compilerOptions.outDir;
+
+        return rm(folder, {
+            recursive: true,
+            force: true,
+        });
     }
 }

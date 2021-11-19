@@ -1,6 +1,9 @@
 import { Args, Command, CommandMethod } from '@bleed-believer/command';
 import { Environment } from '../tool/environment/environment';
+
 import { spawn } from 'child_process';
+import * as cmd from '../tool/cmd';
+import { resolve } from 'path';
 
 @Command({
     main: '...args',
@@ -33,8 +36,21 @@ export class RootCommand {
         // Check if the project needs to use ts-node
         const tsNode = await this._env.requireTsNode();
         if (tsNode) {
+            // Add ts-node
             argv.unshift('ts-node/register');
             argv.unshift('--require');
+        } else {
+            // Recompile
+            await this._env.clearDist();
+            let path = resolve(`./node_modules/.bin/tsc`);
+            if (process.platform === 'win32') {
+                path += '.cmd';
+            }
+            
+            const resp = await cmd.spawn(path);
+            if (resp.stderr) {
+                throw new Error(resp.stderr.toString());
+            }
         }
 
         console.log('>> Executing official TypeORM cli:');
