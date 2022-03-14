@@ -1,17 +1,16 @@
-import { Command, CommandMethod } from '@bleed-believer/command';
+import { Command, Executable } from '@bleed-believer/commander';
 import { Environment } from '../tool/environment/environment';
 
 @Command({
     main: 'status',
-    title: 'Project Status',
-    description: 
+    name: 'Project Status',
+    info: 
                 'Check the current project status '
             +   'according to the configuration files.'
 })
-export class StatusCommand {
+export class StatusCommand implements Executable {
     private _env = new Environment();
 
-    @CommandMethod()
     async start(): Promise<void> {
         await this._env.checkProject();
 

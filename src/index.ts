@@ -1,6 +1,6 @@
 #! /usr/bin/env node
-import { BleedBeliever } from '@bleed-believer/core';
+import { Commander } from '@bleed-believer/commander';
 import { AppRoutingModule } from './app-routing.module';
 
-const main = new BleedBeliever(AppRoutingModule);
-main.bleed();
+const main = new Commander(AppRoutingModule);
+main.execute();

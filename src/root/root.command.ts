@@ -1,4 +1,4 @@
-import { Args, Command, CommandMethod } from '@bleed-believer/command';
+import { Argv, Command, Executable } from '@bleed-believer/commander';
 import { Environment } from '../tool/environment/environment';
 
 import { spawn } from 'child_process';
@@ -7,13 +7,12 @@ import { resolve } from 'path';
 
 @Command({
     main: '...args',
-    title: 'Root command'
+    name: 'Root command'
 })
-export class RootCommand {
+export class RootCommand implements Executable {
     private _env = new Environment();
 
-    @CommandMethod()
-    async start(args: Args): Promise<void> {
+    async start(args: Argv): Promise<void> {
         // Goto check method
         if (args.main[0]?.match(/status/gi)) {
             return;

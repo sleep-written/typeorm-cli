@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require ts-node/register ./src/**/*.test.ts",
-    "prepare": "tsc"
+    "build": "rm -rf ./dist && tsc"
   },
   "repository": {
     "url": "https://github.com/sleep-written/typeorm-cli"
