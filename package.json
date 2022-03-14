@@ -1,6 +1,6 @@
 {
   "name": "@corrasion/typeorm-cli",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "A typeorm cli wrapper to injects ts-node and ts-path-mapping as required packages.",
   "main": "index.js",
   "scripts": {
